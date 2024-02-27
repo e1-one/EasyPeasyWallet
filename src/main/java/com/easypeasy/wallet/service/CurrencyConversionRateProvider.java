@@ -1,6 +1,6 @@
-package com.easypeasy.wallet.exchange.services;
+package com.easypeasy.wallet.service;
 
-import com.easypeasy.wallet.exchange.model.Currency;
+import com.easypeasy.wallet.model.Currency;
 
 import java.time.LocalDateTime;
 
