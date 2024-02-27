@@ -1,4 +1,4 @@
-package com.easypeasy;
+package com.easypeasy.wallet.exchange.service;
 
 import com.easypeasy.wallet.exchange.services.WalletOperations;
 import com.easypeasy.wallet.exchange.services.WalletOperationsImpl;
