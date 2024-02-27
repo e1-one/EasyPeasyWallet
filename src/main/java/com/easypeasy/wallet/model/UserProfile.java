@@ -1,4 +1,4 @@
-package com.easypeasy.wallet.exchange.model;
+package com.easypeasy.wallet.model;
 
 import java.util.Set;
 

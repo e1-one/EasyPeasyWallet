@@ -1,13 +1,10 @@
-package com.easypeasy.wallet.exchange.services;
+package com.easypeasy.wallet.service;
 
-import com.easypeasy.wallet.exchange.services.WalletOperations;
-import com.easypeasy.wallet.exchange.services.WalletOperationsImpl;
-import com.easypeasy.wallet.exchange.services.CurrencyConversionRateProvider;
-import com.easypeasy.wallet.exchange.dao.UserDao;
-import com.easypeasy.wallet.exchange.dao.WalletDao;
-import com.easypeasy.wallet.exchange.model.Currency;
-import com.easypeasy.wallet.exchange.model.UserProfile;
-import com.easypeasy.wallet.exchange.model.Wallet;
+import com.easypeasy.wallet.dao.UserDao;
+import com.easypeasy.wallet.dao.WalletDao;
+import com.easypeasy.wallet.model.Currency;
+import com.easypeasy.wallet.model.UserProfile;
+import com.easypeasy.wallet.model.Wallet;
 import org.junit.jupiter.api.Test;
 import java.util.Set;
 
