@@ -1,6 +1,6 @@
-package com.easypeasy.wallet.exchange.dao;
+package com.easypeasy.wallet.dao;
 
-import com.easypeasy.wallet.exchange.model.Wallet;
+import com.easypeasy.wallet.model.Wallet;
 
 import java.math.BigDecimal;
 

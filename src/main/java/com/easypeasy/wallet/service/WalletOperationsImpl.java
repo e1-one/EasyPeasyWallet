@@ -1,10 +1,10 @@
-package com.easypeasy.wallet.exchange.services;
+package com.easypeasy.wallet.service;
 
-import com.easypeasy.wallet.exchange.dao.WalletDao;
-import com.easypeasy.wallet.exchange.dao.UserDao;
-import com.easypeasy.wallet.exchange.model.Wallet;
-import com.easypeasy.wallet.exchange.model.Currency;
-import com.easypeasy.wallet.exchange.model.UserProfile;
+import com.easypeasy.wallet.dao.UserDao;
+import com.easypeasy.wallet.dao.WalletDao;
+import com.easypeasy.wallet.model.Wallet;
+import com.easypeasy.wallet.model.Currency;
+import com.easypeasy.wallet.model.UserProfile;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
