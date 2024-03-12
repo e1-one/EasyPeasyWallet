@@ -15,10 +15,10 @@ public class ExchangeService {
          * accepts two Currency codes (ISO 4217)
          * @param baseCode code of base currency
          * @param quoteCode code of quote currency
-         * @param timestamp - unixTimestamp 32 bit value
+         * @param timestamp - Unix timestamp (UTC)
          * @return conversion rate
          */
-        double rate(int baseCode, int quoteCode, int timestamp);
+        double rate(int baseCode, int quoteCode, long timestamp);
     }
 
     private ExchangeRateProvider exchangeRateProvider;
@@ -28,19 +28,12 @@ public class ExchangeService {
             throw new IllegalArgumentException("Money amount can't be negative value");
         }
         BigDecimal givenMoney = BigDecimal.valueOf(amount);
-        int currentTime = (int) Timestamp.valueOf(LocalDateTime.now()).getTime();
+        long currentTime = Timestamp.valueOf(LocalDateTime.now()).getTime();
         double rate = exchangeRateProvider.rate(toCurrency.getCode(), givenCurrency.getCode(), currentTime);
         BigDecimal convertedAmount = givenMoney.multiply(BigDecimal.valueOf(rate));
         //round down to cents
         convertedAmount.setScale(2, RoundingMode.DOWN);
         return convertedAmount.doubleValue();
-    }
-
-    public int sum(int a, int b){
-        if(a > b){
-            return -5;
-        }
-        return a + b;
     }
 
 }

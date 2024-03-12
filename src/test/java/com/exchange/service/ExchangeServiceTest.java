@@ -3,8 +3,7 @@ package com.exchange.service;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -21,7 +20,7 @@ class ExchangeServiceTest {
 
     @Test
     void exchange() {
-        when(mockExchange.rate(anyInt(), anyInt(), anyInt())).thenReturn(0.9);
+        when(mockExchange.rate(anyInt(), anyInt(), anyLong())).thenReturn(0.9);
         double actual = underTest.exchange(100, Currency.USD, Currency.EUR);
         assertEquals(90, actual);
     }
