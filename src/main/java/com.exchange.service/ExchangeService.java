@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 
 @AllArgsConstructor
 public class ExchangeService {
-
     public interface ExchangeRateProvider {
         /**
          * accepts two Currency codes (ISO 4217)
@@ -20,7 +19,6 @@ public class ExchangeService {
          */
         double rate(int baseCode, int quoteCode, long timestamp);
     }
-
     private ExchangeRateProvider exchangeRateProvider;
 
     public double exchange(double amount, Currency givenCurrency, Currency toCurrency){
@@ -29,7 +27,8 @@ public class ExchangeService {
         }
         BigDecimal givenMoney = BigDecimal.valueOf(amount);
         long currentTime = Timestamp.valueOf(LocalDateTime.now()).getTime();
-        double rate = exchangeRateProvider.rate(toCurrency.getCode(), givenCurrency.getCode(), currentTime);
+        double rate = exchangeRateProvider.rate(toCurrency.getCode(), givenCurrency.getCode(),
+                currentTime);
         BigDecimal convertedAmount = givenMoney.multiply(BigDecimal.valueOf(rate));
         //round down to cents
         convertedAmount.setScale(2, RoundingMode.DOWN);

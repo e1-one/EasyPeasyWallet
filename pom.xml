@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
+    <groupId>com.exchange</groupId>
     <artifactId>ProjectMutantExample</artifactId>
     <version>1.0-SNAPSHOT</version>
 
@@ -17,7 +17,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.22</version> <!-- Use the latest version -->
+            <version>1.18.22</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -49,30 +49,40 @@
             <version>3.12.4</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.12.0</version>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
-            <!-- JaCoCo Plugin -->
             <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.7</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>prepare-agent</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>report</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>report</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M7</version>
             </plugin>
+            <!-- JaCoCo Plugin -->
+<!--            <plugin>-->
+<!--                <groupId>org.jacoco</groupId>-->
+<!--                <artifactId>jacoco-maven-plugin</artifactId>-->
+<!--                <version>0.8.8</version>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <goals>-->
+<!--                            <goal>prepare-agent</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                    <execution>-->
+<!--                        <id>report</id>-->
+<!--                        <phase>prepare-package</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>report</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
             <!-- Maven Compiler Plugin Configuration for Lombok -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -101,9 +111,41 @@
                     </dependency>
                 </dependencies>
                 <configuration>
+                    <targetClasses>
+                        <param>com.exchange.*</param> <!-- Specify your package names -->
+                    </targetClasses>
+                    <targetTests>
+                        <param>com.exchange.*</param> <!-- Specify your test package names -->
+                    </targetTests>
                     <mutators>
-                        <mutator>ALL</mutator>
-                        <!--                        <mutator>NON_VOID_METHOD_CALLS</mutator>-->
+<!--                        <mutator>ALL</mutator>-->
+                        <mutator>CONDITIONALS_BOUNDARY</mutator>
+                        <mutator>CONSTRUCTOR_CALLS</mutator>
+                        <mutator>EMPTY_RETURNS</mutator>
+                        <mutator>EXPERIMENTAL_ARGUMENT_PROPAGATION</mutator>
+                        <mutator>EXPERIMENTAL_BIG_DECIMAL</mutator>
+                        <mutator>EXPERIMENTAL_BIG_INTEGER</mutator>
+                        <mutator>EXPERIMENTAL_MEMBER_VARIABLE</mutator>
+                        <mutator>EXPERIMENTAL_NAKED_RECEIVER</mutator>
+                        <mutator>EXPERIMENTAL_RETURN_VALUES_MUTATOR</mutator>
+                        <mutator>EXPERIMENTAL_SWITCH</mutator>
+                        <mutator>FALSE_RETURNS</mutator>
+                        <mutator>INCREMENTS</mutator>
+                        <mutator>INLINE_CONSTS</mutator>
+                        <mutator>INVERT_NEGS</mutator>
+                        <mutator>MATH</mutator>
+                        <mutator>NEGATE_CONDITIONALS</mutator>
+                        <mutator>NON_VOID_METHOD_CALLS</mutator>
+                        <mutator>NULL_RETURNS</mutator>
+                        <mutator>PRIMITIVE_RETURNS</mutator>
+                        <mutator>REMOVE_CONDITIONALS_EQUAL_ELSE</mutator>
+                        <mutator>REMOVE_CONDITIONALS_EQUAL_IF</mutator>
+                        <mutator>REMOVE_CONDITIONALS_ORDER_ELSE</mutator>
+                        <mutator>REMOVE_CONDITIONALS_ORDER_IF</mutator>
+                        <mutator>REMOVE_INCREMENTS</mutator>
+                        <mutator>RETURN_VALS</mutator>
+                        <mutator>TRUE_RETURNS</mutator>
+                        <mutator>VOID_METHOD_CALLS</mutator>
                     </mutators>
                 </configuration>
             </plugin>
